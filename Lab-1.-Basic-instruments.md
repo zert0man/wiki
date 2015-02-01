@@ -135,7 +135,7 @@ vagrant ssh`
 ## Ссылки на скачивание инструментов
 - Virtual Box [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 - Vagrant [https://www.vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html)
-- Виртуальная машина Mesdt [http://brn22.tk/mesdt.box](http://brn22.tk/mesdt.box) 
+- Виртуальная машина Mesdt [https://drive.google.com/file/d/0Bwl2Kb4AFw4ISFlYdnNHLUdua1k/view?usp=sharing](https://drive.google.com/file/d/0Bwl2Kb4AFw4ISFlYdnNHLUdua1k/view?usp=sharing) 
 - Git [http://git-scm.com/downloads](http://git-scm.com/downloads)
 
 ## Ссылки на документацию
