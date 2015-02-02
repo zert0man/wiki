@@ -78,14 +78,6 @@ vagrant ssh`
 
 ```
 # Лабораторные работы
-172.28.128.3    www.0.mesdt
-172.28.128.3    www.1.mesdt
-172.28.128.3    www.2.mesdt  
-172.28.128.3    www.3.mesdt  
-172.28.128.3    www.4.mesdt  
-172.28.128.3    www.5.mesdt 
-172.28.128.3    www.6.mesdt  
-172.28.128.3    www.7.mesdt  
 172.28.128.3    0.mesdt 
 172.28.128.3    1.mesdt 
 172.28.128.3    2.mesdt  
@@ -94,13 +86,10 @@ vagrant ssh`
 172.28.128.3    5.mesdt 
 172.28.128.3    6.mesdt  
 172.28.128.3    7.mesdt 
-# Клон http://getbootstrap.com/
-172.28.128.3    www.twbs.mesdt  
+# Клон http://getbootstrap.com/ 
 172.28.128.3    twbs.mesdt  
 # Администраторы базы mysql
-172.28.128.3    www.adminer.mesdt  
 172.28.128.3    adminer.mesdt  
-172.28.128.3    www.phpmyadmin.mesdt 
 172.28.128.3    phpmyadmin.mesdt
 ```
 Проверьте, что всё заработало, набрав адреса в браузере.
