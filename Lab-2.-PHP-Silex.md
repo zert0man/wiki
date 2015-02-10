@@ -95,18 +95,22 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 ```
+
 ### Подключение к базе данных
 1. Подключите пространства имен для работы с Doctrine 
+ 
  ```
  use Doctrine\DBAL\Connection;
  use Silex\Provider\DoctrineServiceProvider;
  ```
 2. Зарегистрируйте компонент в контейнере.
+ 
  ```
  $sapp->register(new DoctrineServiceProvider(),
  ['db.options' => ['driver' => 'pdo_mysql', 'dbname' => 'hw1', 'charset' => 'utf8']]);
  ```
 3. Используйте функции DBAL для получения данных
+ 
  ```
  $conn = $app['db'];
  $students = $conn->fetchAll('select * from students');
@@ -114,13 +118,16 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 ### Подключение шаблонов
 1. Для подключения сервиса Twig используется следующее пространство имен:
-```
-use Silex\Provider\TwigServiceProvider;
-```
+  
+ ```
+ use Silex\Provider\TwigServiceProvider;
+ ```
+
 2. Создайте папку для шаблонов рядом с папками `vendor` и `web`. Подключаем в контейнер:
-```
-$sapp->register(new TwigServiceProvider(),['twig.path' => __DIR__ . '/../views']) 
-```
+
+ ```
+ $sapp->register(new TwigServiceProvider(),['twig.path' => __DIR__ . '/../views']) 
+ ```
 3. Создайте базовый шаблон из макета, который вы сверстали на первой лабораторной.
 4. Создайте шаблоны для списка объектов и для одного объекта.
 5. Подключите их в соответствующих действиях.
