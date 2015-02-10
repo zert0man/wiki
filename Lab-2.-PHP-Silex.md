@@ -94,8 +94,9 @@ $sapp->register(new TwigServiceProvider(),['twig.path' => __DIR__ . '/../views']
 Отчет должен содержать титульный лист, задание, код контроллера, код шаблонов Twig.
 
 ## Ссылки на документацию
-- Документация по PHP [http://silex.sensiolabs.org/documentation](http://silex.sensiolabs.org/documentation)
-- Документация по PHP на русском [http://silex.sensiolabs.org/documentation](http://silex.sensiolabs.org/documentation)
-- Документация по Twig
+- Документация по PHP [http://php.net/docs.php](http://php.net/docs.php)
+- Документация по PHP на русском [http://php.su](http://php.su)
 - PHP Silex Docs [http://silex.sensiolabs.org/documentation](http://silex.sensiolabs.org/documentation)
-- Конфигурирование сайта под Silex [http://silex.sensiolabs.org/doc/web_servers.html](http://silex.sensiolabs.org/doc/web_servers.html)
+- Документация по Twig[http://twig.sensiolabs.org/](http://twig.sensiolabs.org/)
+- Документация по Doctrine [http://www.doctrine-project.org/](http://www.doctrine-project.org/)
+- Конфигурирование сервера для сайта под Silex [http://silex.sensiolabs.org/doc/web_servers.html](http://silex.sensiolabs.org/doc/web_servers.html)
