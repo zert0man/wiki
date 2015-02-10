@@ -90,18 +90,28 @@ return false;
 }
 ```
 
-### Подключение к базе данных
-1. Подключиться к базе данных с помощью Doctrine и вывести список объектов.
-```
-use Doctrine\DBAL\Connection;
-use Silex\Provider\DoctrineServiceProvider;
-```
-
 ```
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 ```
+### Подключение к базе данных
+1. Подключите пространства имен для работы с Doctrine 
+```
+use Doctrine\DBAL\Connection;
+use Silex\Provider\DoctrineServiceProvider;
+```
+2. Зарегистрируйте компонент в контейнере.
+```
+$sapp->register(new DoctrineServiceProvider(),
+['db.options' => ['driver' => 'pdo_mysql', 'dbname' => 'hw1', 'charset' => 'utf8']]);
+```
+3. Используйте функции DBAL для получения данных
+```
+$conn = $app['db'];
+$students = $conn->fetchAll('select * from students');
+```
+
 ### Подключение шаблонов
 1. Для подключения сервиса Twig используется следующее пространство имен:
 ```
@@ -114,6 +124,9 @@ $sapp->register(new TwigServiceProvider(),['twig.path' => __DIR__ . '/../views']
 3. Создайте базовый шаблон из макета, который вы сверстали на первой лабораторной.
 4. Создайте шаблоны для списка объектов и для одного объекта.
 5. Подключите их в соответствующих действиях.
+```
+ return $app['twig']->render('students.twig', ['students' => $students]);
+```
 
 ## Порядок защиты работы
 При защите лабораторной работы необходимо предоставить работающее web-приложение, реализованное на фреймворке Silex и запущенное на web-сервере. Приложение должно выводить список объектов из базы данных.
