@@ -32,10 +32,16 @@ $app->run();
 ### Doctrine
 
 ## Порядок выполнения
-1. Скачать Silex и распаковать в папку, общую с vagrant-коробкой.
-1. Настроить виртуальный хост `1.mesdt` на сервере nginx. Проверить работоспособность.
-На виртуальной машине создать файл `/etc/nginx/sites-available/1.mesdt`
+### Установка и настройка 
+1. Скачать Silex и распаковать в папку, общую с vagrant-коробкой. 
+1. Настроить виртуальный хост `1.mesdt` на сервере nginx. Проверить работоспособность. Сконфигурируйте перенаправление на `index.php`, используйте настройки для вашего веб-сервера ([http://silex.sensiolabs.org/doc/web_servers.html](http://silex.sensiolabs.org/doc/web_servers.html)).
+- Для **nginx**. На виртуальной машине создать файл `/etc/nginx/sites-available/1.mesdt` по аналогии с файлом `0.mesdt`. Добавить конфигурацию из документации.
+- Для **apache**.
+
+### Подключение к базе данных
 1. Подключиться к базе данных с помощью Doctrine и вывести список объектов.
+
+### Подключение шаблонов
 1. Настроить вывод данных с помощью шаблонов Twig.
 1.
 
@@ -48,3 +54,4 @@ $app->run();
 - Документация по PHP на русском [http://silex.sensiolabs.org/documentation](http://silex.sensiolabs.org/documentation)
 - Документация по Twig
 - PHP Silex Docs [http://silex.sensiolabs.org/documentation](http://silex.sensiolabs.org/documentation)
+- Конфигурирование сайта под Silex [http://silex.sensiolabs.org/doc/web_servers.html](http://silex.sensiolabs.org/doc/web_servers.html)
