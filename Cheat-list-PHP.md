@@ -206,3 +206,5 @@ echo MyClass::CONST_VALUE;
 ```
 
 ## Сслыка на документацию
+- Документация по PHP [http://php.net/docs.php](http://php.net/docs.php)
+- Документация по PHP на русском [http://php.su](http://php.su)
