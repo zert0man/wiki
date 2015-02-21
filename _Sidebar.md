@@ -13,7 +13,7 @@
 - [Project](/mesdt/course/wiki/Project) 
 - Cheat lists
 	- [Cheat list Vagrant](/mesdt/course/wiki/Cheat-list-Vagrant) 
-	- [Cheat list PHP](//mesdt/course/wiki/Cheat-list-PHP")
+	- [Cheat list PHP](/mesdt/course/wiki/Cheat-list-PHP)
 	- [Cheat list Twig](/mesdt/course/wiki/Cheat-list-Twig) 
 - Additional info       
 	- [Install XAMPP](/mesdt/course/wiki/Install-XAMPP) 
