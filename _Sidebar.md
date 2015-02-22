@@ -4,6 +4,7 @@
 	- [Tasks for labs](/mesdt/course/wiki/Tasks-for-labs)  
 	- [Lab 1. Basic instruments]    (/mesdt/course/wiki/Lab-1.-Basic-instruments) 
 	    - [Cheat list Vagrant](/mesdt/course/wiki/Cheat-list-Vagrant) 
+	    - [Cheat list nginx](/mesdt/course/wiki/Cheat-list-nginx)
 	    - [Install XAMPP](/mesdt/course/wiki/Install-XAMPP) 
 	- [Lab 2. PHP Silex](/mesdt/course/wiki/Lab-2.-PHP-Silex)
  	    - [Composer](/mesdt/course/wiki/Composer) 
@@ -15,7 +16,9 @@
 	- [Lab 6. Node.JS](/mesdt/course/wiki/Lab-6.-Node.JS) 
 	- [Lab 7. Ruby on Rails](/mesdt/course/wiki/Lab-7.-Ruby-on-Rails) 
 - [Lectures](/mesdt/course/wiki/Lectures) 
-- [Project](/mesdt/course/wiki/Project)      
+- [Project](/mesdt/course/wiki/Project)  
+	- [Symfony](/mesdt/course/wiki/Symfony) 
+    
 
    
       
