@@ -17,7 +17,7 @@
 	- [Lab 7. Ruby on Rails](/mesdt/course/wiki/Lab-7.-Ruby-on-Rails) 
 - [Lectures](/mesdt/course/wiki/Lectures) 
 - [Project](/mesdt/course/wiki/Project)  
-	- [Symfony](/mesdt/course/wiki/Symfony) 
+	- [Symfony 2](/mesdt/course/wiki/Symfony-2) 
     
 
    
