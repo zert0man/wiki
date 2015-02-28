@@ -9,6 +9,34 @@ JVM поставляется в двух видах: JRE (java runtime environment) и JDK (java develo
 - artifact id - идентификатор артефакта;
 - version - версия артефакта.
 
+## Генерики и аннотации
+
+**Генерики (Generics) в Java** - это аналог шаблонов в языке C++. Изначально они появились для упрощения кода работы с коллекциями. Сравните:
+	- код без генериков:
+	```
+	List myIntList = new LinkedList(); 
+	myIntList.add(new Integer(0));
+	Integer x = (Integer) myIntList.iterator().next(); 
+	```
+	
+	- код с генериками:
+	```
+	List<Integer> myIntList = new LinkedList<Integer>();
+	myIntList.add(new Integer(0)); 
+	Integer x = myIntList.iterator().next(); 
+	```
+	
+**Аннотации в Java** - специальная форма синтаксических метаданных, которая может быть добавлена в исходный код. Аннотации используются для анализа кода, компиляции или выполнения. Аннотируемы пакеты, классы, методы, переменные и параметры.
+Выглядит как `@ИмяАннотации`, предваряющее определение переменной, параметра, метода, класса, пакета.
+
+Аннотация выполняет следующие функции:
+- аннотация может использоваться для комментирования или генерации докуменатции;
+- даёт необходимую информацию для компилятора;
+- даёт информацию различным инструментам для генерации другого кода, конфигураций и т. д.;
+- может использоваться во время выполнения для получения данных через отражение (reflection).
+
+В частности, аннотации могут применяться для использования генериков.
+
 ## Сервлеты
 
 Java изначально разрабатывалась с ориентацией на сетевое взаимодействие. Классическим способом реализации веб-сервера на java являются сервлеты.
@@ -103,4 +131,13 @@ Java изначально разрабатывалась с ориентацией на сетевое взаимодействие. Классич
 
 </project>
 ```
+Для работы с фреймворком Spring Boot используется специальный плагин.
 
+## Дополнительная литература
+- Документация по Java 8 [http://docs.oracle.com/javase/8/](http://docs.oracle.com/javase/8/)
+- Документация по Maven [http://maven.apache.org/guides/index.html](http://maven.apache.org/guides/index.html)
+- Список плагинов Maven [http://maven.apache.org/plugins/index.html](http://maven.apache.org/plugins/index.html)
+- [Документация по плагину Spring Boot для Maven](http://docs.spring.io/autorepo/docs/spring-boot/1.1.9.RELEASE/maven-plugin/usage.html)
+- [Официальный учебник по аннотациям](http://docs.oracle.com/javase/tutorial/java/annotations/index.html)
+- [Официальный учебник по генерикам](http://docs.oracle.com/javase/tutorial/java/generics/)
+- [Конспект по генерикам на сайте ИТМО](http://neerc.ifmo.ru/wiki/index.php?title=Generics)

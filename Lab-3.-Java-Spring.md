@@ -4,60 +4,92 @@
 - Познакомиться с фреймворком Spring Boot и уровнем абстракции базы данных Java Persistence Api.
 - Изучить паттерн ORM и Dependency Injection на примере Spring Boot.
 
+## Задание
+Реализовать CRUD для одной из сущностей из лабораторной работы 1 с использованием фреймворка Spring Boot и шаблонов из лабораторной работы 1.
+
 ## Краткие теоретические сведения
 
 - [Java и сборщик проектов Maven](/mesdt/course/wiki/Java) 
-- [Java Spring](/mesdt/course/wiki/Java-Spring) 
-- [Java Persistence Api](/mesdt/course/wiki/JPA) 
-
-### Java Spring Boot
-
-**Java Spring** - огромный фреймворк для языка Java. Приложение на Java Spring представляет собой контейнер компонентов, которые называаются бинами (beans) или артефактами (artefacts). Фактически, это просто классы на языке java/
-
-
-### Java Persistence Api
- 
+- [Java Spring](/mesdt/course/wiki/Cheat-list-Spring-annotations) 
+- [Java Persistence Api](/mesdt/course/wiki/Cheat list Java Persistence Api) 
 
 ## Порядок выполнения
 - [Репозиторий с примером обработки REST-запросов ](https://github.com/mesdt/calculator) (lk jpyfrjvktybz)
 - [Репозиторий с примером лабораторной работы ](https://github.com/mesdt/hw2)
 
-** Рекомендуемая версия: Java 1.8 ** Возможно использование Java 1.6 и выше, но лучше обновитесь, новая Java круче!
+**Рекомендуемая версия: Java 1.8** Возможно использование Java 1.6 и выше, но лучше обновитесь, новая Java круче!
 
 ### Установка и настройка 
 1. Установите Maven.  Для linux это можно сделать командой командой `apt-get install maven`. Для остальных операционных систем - смотрите на [официальном сайте](http://maven.apache.org/).
 2. Зайдите на [cервис для создания заготовки проекта Spring Boot](http://start.spring.io/). Изучите доступные параметры. Создайте проект. Для этого задайте в форме основные параметры для конфигурационного фалйа Maven. Введите идентификатор группы (например, `mesdt`) и идентификатор артефакта (например, `hw3`). Дополнительно можете задать имя проекта, описание и другие параметры. Отметьте необходимые зависимости: web для генерации веб-приложений, шаблонизатор Thymeleaf, библиотеку для работы с данными JPA и драйвер базы данных MySQL. Нажмите кнопку генерации пакета и скачайте архив.  
 3. В скачанном архиве находится заготовка проекта на Spring Boot. Распакуйте архив. Изучите структуру каталогов:
-```
-└── src
-    └── main
-    |   └── java
-    |   |   └── yourProjectName
-	|	|	|	└── SpringHomeWorkApplication.java
-	|	└── Resources
-	|		└── static
-	|		└── templates
-	|		└── application.properties
-	└── test
-        └── java
-            └── yourProjectName	
-				└── SpringHomeWorkApplicationTests.java
-	pom.xml		
-```
+	```
+	└── src
+		└── main
+		|   └── java
+		|   |   └── yourProjectName
+		|	|	|	└── SpringHomeWorkApplication.java
+		|	└── Resources
+		|		└── static
+		|		└── templates
+		|		└── application.properties
+		└── test
+			└── java
+				└── yourProjectName	
+					└── SpringHomeWorkApplicationTests.java
+		pom.xml		
+	```
 
-- `pom.xml` - файл конфигурации Maven;
-- `test` - директория для тестов, в этом курсе рассматриваться не будет;
-- `main` - каталог, содержащий исходные коды приложения, в подкаталоге `java/yourProjectName` будут располагарться файлы с исходным кодом.
-- `static` - каталог для статических ресурсов;
-- `templates` - каталог для файлов представлений;
-- `application.properties` - конфигурационный файл Spring Boot;
-- `SpringHomeWorkApplication.java` - главный файл проекта.
+	- `pom.xml` - файл конфигурации Maven;
+	- `test` - директория для тестов, в этом курсе рассматриваться не будет;
+	- `main` - каталог, содержащий исходные коды приложения, в подкаталоге `java/yourProjectName` будут располагарться файлы с исходным кодом.
+	- `static` - каталог для статических ресурсов;
+	- `templates` - каталог для файлов представлений;
+	- `application.properties` - конфигурационный файл Spring Boot;
+	- `SpringHomeWorkApplication.java` - главный файл проекта.
+4. Настройте встроенный сервер Spring Boot в файле `application.properties`:
+	
+	```
+	server.port=2345
+	```
+	
+	В этом же файле указывается конфигурация базы данных для JPA:
+	
+	```
+	spring.datasource.url=jdbc:mysql://localhost/hw2?useUnicode=yes&characterEncoding=UTF-8
+	spring.datasource.username=root
+	spring.datasource.password=
+	```
+	
+	Включите автоматическую генерацию схемы и логгирование sql-запросов:	
+	```
+	spring.jpa.generate-ddl=true
+	spring.jpa.show-sql=true
+	```
 
-### Подключение к базе данных
+	Теперь если вы укажете пустую базу данных, то схема, описанная аннотациями JPA, сгенерируется автоматически при первом запуске приложения.
 
-### Подключение шаблонов
+	Отключите кэширование шаблонов:  	
+	```
+	spring.thymeleaf.cache=false
+	```
+	Это позволит вам редактировать шаблоны без перезапуска сервера, что очень удобно при разработке. В готовом приложении кэширование необходимо включать для ускорения работы.
+
+### Разработка приложения
+1. Создайте классы сущностей и репозитории. Опишите структуру сущностей с помощью аннотаций. 
+1. Создайте класс контроллера и необходимые действия (actions) в нем. Опишите инъекцию зависимости от репозиториев сущностей для контроллера. Необходимо создать CRUD для одной из сущностей. 
+1. Создайте представления с использованием шаблонизатора Thymeleaf.
+
+Для сборки приложения со всеми зависимостями приложения используется команда `mvn clean install`.
+
+Для запуска приложения используется команда `mvn spring-boot:run`.
+
+### Дополнительное задание на повышение рейтинга
+Реализуйте слой бизнес-логики как сервис.
 
 ## Порядок защиты работы
+При защите лабораторной работы необходимо предоставить работающее web-приложение, реализованное на фреймворке Spring Boot. Приложение должно выводить список объектов из базы данных и предоставлять возмжности редактирования одной из сущностей.
+Отчет должен содержать титульный лист, задание и код приложения.
 
 ## Ссылки на скачивание инструментов
 - Maven [http://maven.apache.org/](http://maven.apache.org/)
@@ -65,4 +97,6 @@
 
 ## Ссылки на документацию
 - Документация по Java 8 [http://docs.oracle.com/javase/8/](http://docs.oracle.com/javase/8/)
+- Документация по Spring Boot [http://docs.spring.io/spring-boot/docs/current/reference/html/](http://docs.spring.io/spring-boot/docs/current/reference/html/)
+- [Документация по JPA-аннотациям](http://www.oracle.com/technetwork/middleware/ias/toplink-jpa-annotations-096251.html)
 - Документация по шаблонизатору Thymeleaf [http://www.thymeleaf.org/](http://www.thymeleaf.org/)
