@@ -24,6 +24,7 @@
 `@Table(foo)` конфигурирует имя таблицы, в которой будет храниться сущность (в данном случае имя таблицы `foo`).
 
 `@Id` указывайте перед полями класса, которые создают первичный ключ таблицы. Классический пример:
+
 ```
     @Id
     private int ID;
@@ -33,15 +34,18 @@
 
 
 `@Column` используется для задания свойств хранения отдельных полей сущности в таблице:
+
 ```
 @Column(nullable = false, unique = true)
 private String name;
 ```
 
 ## Аннотации описания связей
+
 Аннотации `@OneToOne`, `@ManyToOne`, `@OneToMany`, `@ManyToMany` используются для описания связей между сущностями.
 
 Пример:
+
 ```
 	@OneToMany(mappedBy = "id.student", cascade = CascadeType.REMOVE)
 	private Collection<Score> scores;

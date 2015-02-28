@@ -11,10 +11,10 @@
 
 - [Java и сборщик проектов Maven](/mesdt/course/wiki/Java) 
 - [Java Spring](/mesdt/course/wiki/Cheat-list-Spring-annotations) 
-- [Java Persistence Api](/mesdt/course/wiki/Cheat list Java Persistence Api) 
+- [Java Persistence Api](/mesdt/course/wiki/Cheat-list-JPA) 
 
 ## Порядок выполнения
-- [Репозиторий с примером обработки REST-запросов ](https://github.com/mesdt/calculator) (lk jpyfrjvktybz)
+- [Репозиторий с примером обработки REST-запросов ](https://github.com/mesdt/calculator) (для ознакомления)
 - [Репозиторий с примером лабораторной работы ](https://github.com/mesdt/hw2)
 
 **Рекомендуемая версия: Java 1.8** Возможно использование Java 1.6 и выше, но лучше обновитесь, новая Java круче!
@@ -25,19 +25,19 @@
 3. В скачанном архиве находится заготовка проекта на Spring Boot. Распакуйте архив. Изучите структуру каталогов:
 	```
 	└── src
-		└── main
-		|   └── java
-		|   |   └── yourProjectName
-		|	|	|	└── SpringHomeWorkApplication.java
-		|	└── Resources
-		|		└── static
-		|		└── templates
-		|		└── application.properties
-		└── test
-			└── java
-				└── yourProjectName	
-					└── SpringHomeWorkApplicationTests.java
-		pom.xml		
+	|	└── main
+	|	|   └── java
+	|	|   |   └── yourProjectName
+	|	|	|	|	└── SpringHomeWorkApplication.java
+	|	|	└── Resources
+	|	|		└── static
+	|	|		└── templates
+	|	|		└── application.properties
+	|	└── test
+	|		└── java
+	|			└── yourProjectName	
+	|				└── SpringHomeWorkApplicationTests.java
+	└──	pom.xml		
 	```
 
 	- `pom.xml` - файл конфигурации Maven;
