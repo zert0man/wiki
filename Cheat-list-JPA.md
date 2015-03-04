@@ -51,7 +51,7 @@ private String name;
 ```
 	@OneToMany(mappedBy = "id.student", cascade = CascadeType.REMOVE)
 	private Collection<Score> scores;
-``
+```
 
 ## Аннотации описания событий
 JPA позволяет задать функции для обработки собылий в классе сущности:
