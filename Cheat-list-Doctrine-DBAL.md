@@ -13,38 +13,80 @@
 ```
 fetchAll( string $sql, array $params = array() )
 ```
-Prepares and executes an SQL query and returns the result as an associative array.
-Parameters
 
-$sql
-    The SQL query.
-$params
-    The query parameters.
+Выполняет запрос на выборку данных и возвращает ассоциативный массив с результатом.
+
+Параметры:
+- `$sql` - SQL-запрос, как правило, `select`.
+- `$params` - параметры запроса в виде массива.
 
 Например:
+
 ```
  $students = $conn->fetchAll('select * from students');
 ```
+
+Результат будет массивом:
+
+```
+array(4) {
+  [0]=>
+  array(2) {
+    ["id"]=>
+    string(1) "1"
+    ["name"]=>
+    string(12) "Иванов"
+  }
+  [1]=>
+  array(2) {
+    ["id"]=>
+    string(1) "4"
+    ["name"]=>
+    string(14) "Иванова"
+  }
+  [2]=>
+  array(2) {
+    ["id"]=>
+    string(1) "3"
+    ["name"]=>
+    string(12) "Петров"
+  }
+  [3]=>
+  array(2) {
+    ["id"]=>
+    string(1) "2"
+    ["name"]=>
+    string(16) "Сидорова"
+  }
+}
+```
+
+Пример с параметром:
+
+```
+ $students = $conn->fetchAll('select * from students where id > ?',array(2));
+```
+
+Результат на тех же данных:
 
 ```
 array(2) {
   [0]=>
   array(2) {
     ["id"]=>
-    string(1) "1"
+    string(1) "4"
     ["name"]=>
-    string(4) "Сидорова"
+    string(14) "Иванова"
   }
   [1]=>
   array(2) {
     ["id"]=>
-    string(1) "2"
+    string(1) "3"
     ["name"]=>
-    string(8) "Иванов"
+    string(12) "Петров"
   }
 }
 ```
-
 ## Функции для изменения в таблице
 
 Если вам необходима более сложная функциональность команд изменения, используйте функцию `executeUpdate()`.
