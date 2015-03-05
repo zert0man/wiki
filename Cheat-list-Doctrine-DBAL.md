@@ -2,7 +2,7 @@
 
 [Ссылка на документацию по Doctrine DBAL](http://doctrine-dbal.readthedocs.org/en/latest/reference/data-retrieval-and-manipulation.html)
 
-[Doctrine\DBAL\Connection API](http://www.doctrine-project.org/api/dbal/2.1/class-Doctrine.DBAL.Connection.html)
+[Doctrine DBAL Connection API](http://www.doctrine-project.org/api/dbal/2.1/class-Doctrine.DBAL.Connection.html)
 
 ## Функции для выборки из таблицы
 
@@ -166,7 +166,7 @@ insert( string $tableName, array $data, array $types = array() )
 
 ### delete
 
-``
+```
 delete( string $tableName, array $identifier )
 ```
 
