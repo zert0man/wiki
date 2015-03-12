@@ -16,6 +16,7 @@
 		- [Java Spring](/mesdt/course/wiki/Cheat-list-Spring-annotations) 
 		- [Java Persistence Api](/mesdt/course/wiki/Cheat-list-JPA) 
 	- [Lab 4. AJAX](/mesdt/course/wiki/Lab-4.-AJAX) 
+		- [Cheat list jQuery](/mesdt/course/wiki/Cheat-list-jQuery) 
 	- [Lab 5. MongoDB](/mesdt/course/wiki/Lab-5.-MongoDB) 
 	- [Lab 6. Node.JS](/mesdt/course/wiki/Lab-6.-Node.JS) 
 	- [Lab 7. Ruby on Rails](/mesdt/course/wiki/Lab-7.-Ruby-on-Rails) 
