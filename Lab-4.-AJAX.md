@@ -82,40 +82,26 @@
 	На Java Spring:
 	
 	```java
-		/**
-		 * Requires org.json to be installed.
-		 * Try to install it yourself.
-		 * Maybe it's also better to place some of the JSON 
-		 * conversion into class methods.
-		 * @since 1.8
-		 */
-		@ResponseBody
-		@RequestMapping(method = RequestMethod.GET, value = "/students/{id}/grades", produces={"text/javascript","application/json"})
-		public String getGradesJSON(@PathVariable Long id) {
-			Student student = hw2.student(id);
-			Map<Subject, Integer> scores = hw2.scores(student);
-			Collection<Subject> subjects = hw2.subjects(); // no such method in service
-			
-			JSONArray jsubjects = new JSONArray(
-					subjects.stream().map(
-							(subject) -> new JSONObject()
-								.put("id", subject.getId())
-								.put("name", subject.getName())
-					).toArray()
-				);
-			
-			JSONArray jscores = new JSONArray(
-					scores.entrySet().stream().map(
-							(entry) -> new JSONObject()
-								.put(entry.getKey().getId().toString(), entry.getValue())
-					).toArray()
-				);
-			
-			return new JSONObject()
-				.put("subjects", jsubjects)
-				.put("scorez", jscores)
-				.toString();
-		}
+/**
+ * No need for org.json now
+ * @since 1.8
+ */
+@ResponseBody
+@RequestMapping(method = RequestMethod.GET, value = "/students/{id}/grades")
+public Object getGradesJSON(@PathVariable Long id) {
+	Student student = hw2.student(id);
+	HashMap<String, Object> result = new HashMap<String, Object>();		
+	result.put("subjects", hw2.subjects());
+	result.put("scorez", hw2.scores(student).entrySet()
+		.stream()
+			.collect(Collectors.toMap(
+					(entry) -> entry.getKey().getId(),
+					(entry) -> entry.getValue()
+				)
+			)
+	);
+	return result; 
+}
 	```
 	
 1. Внести изменения в представления, добавив форму, которая будет отправлять данные с помощью AJAX и получать результат.
