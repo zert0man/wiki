@@ -14,7 +14,7 @@
 
 ## Краткие теоретические сведения
 
-**JavaScript** - 
+**JavaScript** - скриптовый язык для реализации интерактивности в браузерах. 
 
 **AJAX (асинхронный JavaScript и XML)** - технология для генерации содержимого страницы без полной перезагрузки. Это не самостоятельная технология, а концепция использования нескольких смежных технологий. AJAX базируется на двух основных принципах:
 - использование технологии динамического обращения к серверу "на лету", без перезагрузки всей страницы полностью, например:
@@ -57,54 +57,47 @@
 
 1. Разработать маршрт и реализовать действие, которое возвращает результат работы в формате json.
 	
-	На PHP Silex сформировать ответ на языке json можно с момощью соответсвующего метода:
+	- На PHP Silex сформировать ответ на языке json можно с момощью соответсвующего метода:
+
+		```
+		public JsonResponse json(mixed $data = array(), int $status = 200, array $headers = array())
+		```
+
+		Пример:
+
+		```php
+		$sapp->get('/students/{id}/grades', function ($id) use ($sapp) {
+			/**@var $conn Connection */
+			$conn = $sapp['db'];
+			$subjects = $conn->fetchAll('select * from subjects');
+			$scores = $conn->fetchAll('select * from scores where student_id = ?', [$id]);
+			$scorez = [];
+			foreach ($scores as $score) {
+				$scorez[$score['subject_id']] = $score['score'];
+			}
+			return $sapp->json(array('subjects'=>$subjects,'scorez'=>$scorez));
+		});
+		```
+		Подробный пример смотрите в [hw4_php](https://github.com/mesdt/hw4_php). 
+			
+	- На Java Spring Boot не требуется специально преобразовывать объекты в json, достаточно просто вернуть их из метода-действия:
 	
-	```
-	public JsonResponse json(mixed $data = array(), int $status = 200, array $headers = array())
-	```
-	
-	Пример:
-	
-	```php
-	$sapp->get('/students/{id}/grades', function ($id) use ($sapp) {
-		/**@var $conn Connection */
-		$conn = $sapp['db'];
-		$subjects = $conn->fetchAll('select * from subjects');
-		$scores = $conn->fetchAll('select * from scores where student_id = ?', [$id]);
-		$scorez = [];
-		foreach ($scores as $score) {
-			$scorez[$score['subject_id']] = $score['score'];
-		}
-		return $sapp->json(array('subjects'=>$subjects,'scorez'=>$scorez));
-	});
-	```
-	
-	На Java Spring:
-	
-	```java
-/**
- * No need for org.json now
- * @since 1.8
- */
-@ResponseBody
-@RequestMapping(method = RequestMethod.GET, value = "/students/{id}/grades")
-public Object getGradesJSON(@PathVariable Long id) {
-	Student student = hw2.student(id);
-	HashMap<String, Object> result = new HashMap<String, Object>();		
-	result.put("subjects", hw2.subjects());
-	result.put("scorez", hw2.scores(student).entrySet()
-		.stream()
-			.collect(Collectors.toMap(
-					(entry) -> entry.getKey().getId(),
-					(entry) -> entry.getValue()
-				)
-			)
-	);
-	return result; 
-}
-	```
+		```java
+			@ResponseBody
+			@RequestMapping(method = RequestMethod.GET, value = "/students/{id}/scores")
+			public Object gradesStudent(@PathVariable Long id) {
+				Student student = hw2.student(id);
+				return hw2.scoresAsStr(student);
+			}
+		```
+		Подробный пример смотрите в [hw4_java](https://github.com/mesdt/hw4_java). 
+			- Добавлено два маршрута и два соответствующих действия в контроллер. 
+			- Добавлено два метода в сервис (редактирование имени студентов и получение списка оценок в формате, где ключем является название предмета, а не объект предмета).
+			- Добавлен js-файл для ajax-запросов
+			- Изенен шаблон `students`.
 	
 1. Внести изменения в представления, добавив форму, которая будет отправлять данные с помощью AJAX и получать результат.
+	
 1. Подключить jQuery.
 
 	```javascript
@@ -112,13 +105,51 @@ public Object getGradesJSON(@PathVariable Long id) {
 	```
 1. Создать свой файл скриптов. С использованием JQuery написать AJAX-запрос.
 
+**Замечание:** для отладки скриптов используйте вкладки "Сеть" (для просмотра результатов запросов) и "Консоль" (для просмотра ошибок JavaScript) в инструментах вашего браузера.
 
+### Пример из проекта [hw4_java](https://github.com/mesdt/hw4_java), получение списка оценок. 
+Создаем кнопку в шаблоне:
+
+```
+	<button class="btn btn-default btn-grades" th:attr="data-id=${student.id}">Показать оценки</button>
+```
+
+Где-то в шаблоне создаем место, куда будем выводить информацию. Как правило, такие места имеют уникальный `id`. Вы можете выводить одну и ту же информацию сразу в несколько мест, используя атрибут `class` вместо `id`.
+
+```
+	<div class="col-md-4" id="grades">		
+	</div>
+```
+
+Создаем событие, обрабатывающее клик на кнопку:
+
+```
+	$(document).ready(function(){    
+	...
+	$(".btn-grades").click(function(){
+			id = $(this).data("id"); // Получаем значение id студента из поля data кнопки
+			$.ajax({ // Отправляем запрос
+							type: "GET",
+							url: "/students/"+id+"/scores"
+					})
+					.done(function( data ) { // Разбираем полученные данные и пишем в блок grades
+							$("#grades").html( "<h3>Оценки</h3>" );
+							for (var subject in data) {
+									$("#grades").append( subject+": "+ (data[subject] ? data[subject] : "-")+"<br>" );
+							}
+
+					});		
+	});
+	}) ;
+```
 
 ## Дополнительное задание на повышение рейтинга
 
+Вы можете реализовать дополнительные действия через AJAX (поиск, сортировка, другое, зависит от предметной области), сделать красивое оформление и уместные сообщения при обработке запросов.
+
 ## Порядок защиты работы
 
-## Ссылки на скачивание инструментов
+При защите лабораторной необходимо продемонстрировать работу двух функций, которые используют AJAX. Необходимо уметь доказать, что это AJAX. В отчете необходимо привести код контроллера, модели и представления (можно не полностью, только добавленные методы), а также текст javascript.
 
 ## Ссылки на документацию
 - [Официальная документация JSON на русском!](http://www.json.org/json-ru.html)
