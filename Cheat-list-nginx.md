@@ -14,6 +14,10 @@ sudo ln -s /etc/nginx/sites-available/1.mesdt /etc/nginx/sites-enabled/1.mesdt
 ```
 nginx -s reload
 ```
+или
+```
+service nginx restart
+```
 
 Перезапускать остальные сервера и всю виртуальную машину не нужно.
 
@@ -46,7 +50,7 @@ server {
 
 ```
 
-## Сслыка на документацию
+## Ссылка на документацию
 [Руководство для начинающих](http://nginx.org/ru/docs/beginners_guide.html)
 
 ## Благодарности
