@@ -59,7 +59,7 @@
 	
 	- На PHP Silex сформировать ответ на языке json можно с помощью соответствующего метода:
 
-		```
+		```php
 		public JsonResponse json(mixed $data = array(), int $status = 200, array $headers = array())
 		```
 
@@ -110,20 +110,20 @@
 ### Пример из проекта [hw4_java](https://github.com/mesdt/hw4_java), получение списка оценок. 
 Создаем кнопку в шаблоне:
 
-```
+```html
 	<button class="btn btn-default btn-grades" th:attr="data-id=${student.id}">Показать оценки</button>
 ```
 
 Где-то в шаблоне создаем место, куда будем выводить информацию. Как правило, такие места имеют уникальный `id`. Вы можете выводить одну и ту же информацию сразу в несколько мест, используя атрибут `class` вместо `id`.
 
-```
+```html
 	<div class="col-md-4" id="grades">		
 	</div>
 ```
 
 Создаем событие, обрабатывающее клик на кнопку:
 
-```
+```javascript
 	$(document).ready(function(){    
 	...
 	$(".btn-grades").click(function(){
