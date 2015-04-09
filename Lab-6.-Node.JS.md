@@ -23,7 +23,11 @@
 Подробнее про эти модули вы можете прочитать в документации.
 
 ## Порядок работы
-1. Если вы не используете виртуальную машину mesdt, [скачайте](http://nodejs.org/download) и установите Node.js. 
+
+Пример простейшего приложения с комментариями вы можете найти в репозитории [hw5_simple](https://github.com/mesdt/hw5_simple). Для более подробного изучения посмотрите репозиторий
+[hw5](https://github.com/mesdt/hw5).
+
+1. Если вы не используете виртуальную машину mesdt, [скачайте](http://nodejs.org/download) и установите Node.js. После установки обязательно перезагрузитесь.
 1. Создайте папку для будущего приложения: 
 	
 	```
@@ -33,194 +37,70 @@
 1. Создайте конфигурационный файл.
     Он должен называться `package.json` и содержать в себе следующие строки:
 
-    \lstinputlisting{../express/package.1.json}
+    ```javascript
+	{
+	  "name": "hw6",
+	  "version": "0.0.1",
+	  "description": "Mesdt hw6 example",
+	  "dependencies": {
+		"express": "4.12.3",
+		"mongodb": "2.0.27",
+		"mongoose": "3.8.x",
+		"swig": "1.4.2",
+		"cookie-parser": "1.3.4",
+		"body-parser": "1.12.2"
+	  },
+	  "author": "Varvara Krayvanova <krayvanova@gmail.com>",
+	  "license": "MIT"
+	}
+	```
     
-    Обратите внимание на версию \code{express} в секции \code{dependencies:}
-    желательно, во избежание сюрпризов в будущем, указывать конкретную версию
-    фреймворка. На данный момент это  \code{4.0.0-rc2.} Актуальный
-    номер версии в репозитории можно узнать с помощью команды
+    Обратите внимание на версию \code{express} в секции \code{dependencies:} желательно, во избежание сюрпризов в будущем, указывать конкретную версию фреймворка. Актуальный номер версии в репозитории можно узнать с помощью команды
 
-    \begin{lstlisting}
-      # npm info express version
-    \end{lstlisting}
+    ```
+       npm info express version
+    ```
 
-  \end{item}
-  \begin{item}
-
-    Введите команду
-    \begin{lstlisting}
-      # npm install
-    \end{lstlisting}
-
-    После выполнения команды появится каталог \code{./node\_modules,}
-    содержащий все зависимости проекта. Их также можно посмотреть с
-    помощью команды \code{npm ls.}
-
-  \end{item}
-  \begin{item}
-
-    Создайте главный файл приложения, например,\code{app.js}:
-
-    \lstinputlisting{../express/app.1.js}
-
-    и каталог с представлениями
-
-    \begin{lstlisting}
-      # mkdir views
-    \end{lstlisting}
-		
-    А также папку для статических ресурсов, например, \texttt{public} 
-		\begin{lstlisting}
-      # mkdir public
-    \end{lstlisting}
-  \end{item}
-  
-  \begin{item}
-
-    В предыдущем пункте мы указали \code{jade} в качестве
-    шаблонизатора. Создайте представление для обработки формы:
-
-    \code{views/form.jade:}
-    \lstinputlisting{../express/views/form.jade}
-
-    Строка \code{include form.html} добавляет файл формы в формате
-    простого \code{html} в представление. При желании, вместо включения можно
-    использовать более краткий \code{jade} для разметки.
-
-    \code{views/form.html:}
-    \lstinputlisting{../express/views/form.1.html}
+1. Установите необходимые модули командой:
     
-  \end{item}
-  \begin{item}
-    Любуемся результатом
-    \begin{lstlisting}
-      # node app.js 
-      # google-chrome "\url{http://localhost:3000/}"
-    \end{lstlisting}
-    
-  \end{item}
-  \begin{item}
-    Добавим в приложение функцию поиска. Чаще всего в качестве БД для
-    \code{Node.js} используется \code{mongoDB}. Порядок установки описан в предыдущих лабораторных.
-  \end{item}
-  \begin{item}
-    Запускаем сервис mongodb, если еще не запущен.
-  \end{item}
-  \begin{item}
-    Создадим базу данных для приложения.
-    \begin{lstlisting}
-      # mongo
-    \end{lstlisting}
-    Откроется интерактивный шелл доступа к БД. 
-    \begin{lstlisting}
-      > use hellodb
-    \end{lstlisting}
-    
-  \end{item}
-  \begin{item}
-    Теперь мы в нашей новой базе. Но фактически база не будет создана,
-    пока в нее не будут записаны никакие данные. Занесем туда парочку
-    новых записей, создав попутно новую коллекцию \code{users}: 
-    \begin{lstlisting}
-      > u1 = {name: "ivan", surname: "petrov", description: "loves apples"}
-      > u2 = {name: "vasya", surname: "ivanov", description: "hates dogs"}
-      > db.users.insert(u1)
-      > db.users.insert(u2)
-      > db.users.find()
-    \end{lstlisting}
-    
-  \end{item}
-  \begin{item}
-    Наше приложение будет искать описание людей по запросу.
-    
-    Воспользуемся фреймворком \code{mongoose} для извлечения данных из
-    БД. Подправим зависимости:
-    
-    \code{package.json:}
-    \lstinputlisting{../express/package.json}
+	```
+       npm install
+    ```
+	
+	Для выполнения команды необходимо соединение с интернетом. После выполнения команды появится каталог `./node_modules`, содержащий все зависимости проекта. Их также можно посмотреть с помощью команды `npm ls`.
 
-    ... обновляемся:
+1. Создайте и каталог с представлениями `views`, а также папку для статических ресурсов, например, `public`. 
 
-    \begin{lstlisting}
-      # npm install
-    \end{lstlisting}
+    ```
+      mkdir views
+      mkdir public
+    ```
+	
+1. Создайте главный файл приложения \code{app.js}, а также шаблоны с использованием выбранного шаблонизатора.  
 
-    ... подключаемся, добавляем схему, создаем модель, ищем данные по
-    запросу и возвращаем:
-    
-    \code{app.js, с комментариями:}
-    \begin{verbatim}
-// подчключаем необходимые компоненты: фреймворк express
-var express = require('express'),
-    // модуль для управления путями
-		path = require("path"),
-    // компонент парсера HTML и JSON для него, 
-    // подробнее: в туториале на сайте expressjs.com
-    bodyParser = require('body-parser'),
-    // библиотеку mongoose для более удобного
-    // взаимодействия с БД
-    mongoose = require('mongoose'),
-    // и класс для создания схемы БД
-    dbSchema = mongoose.Schema,
-    app = express();
+1. Запуск приложения выполняется следующей командой:
 
-// соединияемся с сервером mongoDB
-mongoose.connect('mongodb://localhost/hellodb');
+	```
+	  node app.js
+	```
 
-// объявляем схему хранящихся в документе mongoDB
-// данных. Таким образом, можно работать с nosql
-// базой в привычном стиле
-var usersSchema = new dbSchema({
-  name:  String,
-  surname: String,
-  description:   String
-});
+	Запускается процесс-демон, который будет слушать указанный вами порт. Не закрывайте консоль, иначе сервер отключится. Если что-то пошло не так, вы увидите ошибки в консоли. После исправления ошибок сервер надо перезапустить. Остановить сервер можно нажатием Ctrl+C.
+	
+** Примечание: ** перед запуском убедитесь, что сервер mongodb запущен, и вы прописали правильную конфигурацию.	
 
-// создаем модель по схеме, указывая на коллекцию 'users'
-var usersModel = mongoose.model('users', usersSchema);
+## Дополнительно
+Любой дополнительный функционал будет в плюс.
 
-// указываем каталог с представлениями
-app.set('views', __dirname + '/views');
-// устанавливаем язык шаблонизатора
-app.set('view engine','jade');
-// используем body-parser для обработки запросов
-app.use(bodyParser());
+## Защита лабораторной работы
+На защите лабораторной работы студент должен продемонстрировать работающее приложение, в котором можно просматривать, добавлять и удалять записи. Редактирование, так и быть, можете не делать.
 
-// Статические ресурсы будут размещены в папке public
-// При обращении к этим файлам public указывать не надо
-app.use(express.static(path.join(__dirname, 'public')));
-
-// объявляем GET маршрут
-app.get('/form', function(req, res) {
-    // отдаем по запросу обработанное представление
-    res.render('form', {
-        // устанавливаем в представлении необходимые
-        // переменные
-		pageTitle: 'Ajax Form'
-	});
-});
-
-// объявляем POST маршрут, для приема данных
-app.post('/submit', function(req, res) {
-    
-    usersModel
-    // ищем записи, соответствующие запросу
-        .find({name: req.body.name, 
-					surname: req.body.surname})
-    // отправляем в ответ результат поиска
-        .exec(function(err,docs) {
-            res.send(docs);
-        });
-
-});
-
-// запускаем сервер приложения на порту 3000
-app.listen(3000);
-
-\end{verbatim}
-    ... и немного изменим страничку формы под новый формат данных:
-
-\textbf{Дополнительное задание: }
-\begin{itemize}
-	\item Использовать возможности jQuery для отображения галерей, анимации и другого (на выбор).
-\end{itemize}
+##Дополнительная литература
+- [Учебник для начинающих по Node.js](http://nodebeginner.ru/)
+- [Интерактивный учебник продвинутого уровня Node.js](http://nodeschool.io/)
+- [Репозиторий и пакетный менеджер NPM](https://www.npmjs.org/)
+- [Документация по Node.js](http://nodejs.org/api/)
+- [Express](http://expressjs.com/) 
+- [Path](https://nodejs.org/api/path.html) 
+- [Swig](http://paularmstrong.github.io/swig/);
+- [Jade](http://jade-lang.com/).
+- [Mongoose](http://mongoosejs.com/docs/guide.html)
