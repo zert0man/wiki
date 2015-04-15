@@ -24,6 +24,7 @@
 		- [Cheat list Mongo aggregation framework](/mesdt/course/wiki/Cheat-list-Mongo-Aggregation-Framework) 
 	- [Lab 6. Node.JS](/mesdt/course/wiki/Lab-6.-Node.JS) 
 	- [Lab 7. Ruby on Rails](/mesdt/course/wiki/Lab-7.-Ruby-on-Rails) 
+		- [Cheat list Ruby](/mesdt/course/wiki/Cheat-list-Ruby) 
 - [Lectures](/mesdt/course/wiki/Lectures) 
 - [Project](/mesdt/course/wiki/Project)  
 	- [Symfony 2](/mesdt/course/wiki/Symfony-2) 
