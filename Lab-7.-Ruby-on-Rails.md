@@ -146,5 +146,5 @@ Ruby on Rails - классический MVC-фреймворк для язык�
 - [Документация по фреймворку на русском](http://rusrails.ru/)
 - [Getting Started with Rails на русском](http://rusrails.ru/getting-started-with-rails)
 - [Getting Started with Rails (пример создания блога)](http://guides.rubyonrails.org/getting\_started.html)
-- [Большой список гемов] `https://rubygems.org)
+- [Большой список гемов](https://rubygems.org)
 - [Русскоязычный Викиучебник по Ruby](http://ru.wikibooks.org/wiki/Ruby)
