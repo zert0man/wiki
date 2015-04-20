@@ -1,5 +1,6 @@
 - [Main page](/mesdt/course/wiki)     
 - [Course overview](/mesdt/course/wiki/Course-overview) 
+- [Exam](https://github.com/mesdt/course/wiki/Exam)
 - Labs
 	- [Tasks for labs](/mesdt/course/wiki/Tasks-for-labs)  
 	- [Lab 1. Basic instruments]    (/mesdt/course/wiki/Lab-1.-Basic-instruments) 
