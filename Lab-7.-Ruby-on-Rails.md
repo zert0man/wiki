@@ -90,7 +90,7 @@ Ruby on Rails - классический MVC-фреймворк для язык�
 1. Если появляется ошибка ssl, выполните команды
 
 	```	
-    		gem sources -r https://rubygems.org/
+   		gem sources -r https://rubygems.org/
    		gem sources -a http://rubygems.org/
 	```
 
