@@ -159,6 +159,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 - Документация по PHP [http://php.net/docs.php](http://php.net/docs.php)
 - Документация по PHP на русском [http://php.su](http://php.su)
 - PHP Silex Docs [http://silex.sensiolabs.org/documentation](http://silex.sensiolabs.org/documentation)
-- Документация по Twig[http://twig.sensiolabs.org/](http://twig.sensiolabs.org/)
+- Документация по Twig [http://twig.sensiolabs.org/](http://twig.sensiolabs.org/)
 - Документация по Doctrine [http://www.doctrine-project.org/](http://www.doctrine-project.org/)
 - Конфигурирование сервера для сайта под Silex [http://silex.sensiolabs.org/doc/web_servers.html](http://silex.sensiolabs.org/doc/web_servers.html)
