@@ -80,6 +80,7 @@ $app->run();
 
 ## Порядок выполнения
 [Репозиторий с примером лабораторной работы ](https://github.com/mesdt/hw1)
+
 [Silex Fat](https://drive.google.com/file/d/0Bwl2Kb4AFw4IU2ttOTlIRm05UGM/view?usp=sharing) - скачивайте отсюда, на официальном сайте что-то случилось с архивом.
 ### Установка и настройка 
 1. Скачать Silex и распаковать в папку, общую с vagrant-коробкой. 
